@@ -1,0 +1,436 @@
+scalar BigInt
+
+"""
+Boolean expression comparing fields on type "BigInt"
+"""
+input BigIntFilter {
+  eq: BigInt
+  gt: BigInt
+  gte: BigInt
+  lt: BigInt
+  lte: BigInt
+  neq: BigInt
+}
+
+"""
+Boolean expression comparing fields on type "Boolean"
+"""
+input BooleanFilter {
+  eq: Boolean
+  gt: Boolean
+  gte: Boolean
+  lt: Boolean
+  lte: Boolean
+  neq: Boolean
+}
+
+scalar Cursor
+
+scalar Date
+
+"""
+Boolean expression comparing fields on type "Date"
+"""
+input DateFilter {
+  eq: Date
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  neq: Date
+}
+
+scalar Datetime
+
+"""
+Boolean expression comparing fields on type "Datetime"
+"""
+input DatetimeFilter {
+  eq: Datetime
+  gt: Datetime
+  gte: Datetime
+  lt: Datetime
+  lte: Datetime
+  neq: Datetime
+}
+
+"""
+Boolean expression comparing fields on type "Float"
+"""
+input FloatFilter {
+  eq: Float
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  neq: Float
+}
+
+"""
+Boolean expression comparing fields on type "Int"
+"""
+input IntFilter {
+  eq: Int
+  gt: Int
+  gte: Int
+  lt: Int
+  lte: Int
+  neq: Int
+}
+
+scalar JSON
+
+"""
+Boolean expression comparing fields on type "JSON"
+"""
+input JSONFilter {
+  eq: JSON
+  neq: JSON
+}
+
+"""The root type for creating and mutating data"""
+type Mutation {
+  """Deletes zero or more records from the collection"""
+  deleteFromdictionaryCollection(
+    """Restricts the mutation's impact to records matching the critera"""
+    filter: dictionaryFilter
+
+    """
+    The maximum number of records in the collection permitted to be affected
+    """
+    atMost: Int! = 1
+  ): dictionaryDeleteResponse!
+
+  """Deletes zero or more records from the collection"""
+  deleteFromprofilesCollection(
+    """Restricts the mutation's impact to records matching the critera"""
+    filter: profilesFilter
+
+    """
+    The maximum number of records in the collection permitted to be affected
+    """
+    atMost: Int! = 1
+  ): profilesDeleteResponse!
+
+  """Adds one or more `dictionaryInsertResponse` records to the collection"""
+  insertIntodictionaryCollection(objects: [dictionaryInsertInput!]!): dictionaryInsertResponse
+
+  """Adds one or more `profilesInsertResponse` records to the collection"""
+  insertIntoprofilesCollection(objects: [profilesInsertInput!]!): profilesInsertResponse
+
+  """Updates zero or more records in the collection"""
+  updatedictionaryCollection(
+    """
+    Fields that are set will be updated for all records matching the `filter`
+    """
+    set: dictionaryUpdateInput!
+
+    """Restricts the mutation's impact to records matching the critera"""
+    filter: dictionaryFilter
+
+    """
+    The maximum number of records in the collection permitted to be affected
+    """
+    atMost: Int! = 1
+  ): dictionaryUpdateResponse!
+
+  """Updates zero or more records in the collection"""
+  updateprofilesCollection(
+    """
+    Fields that are set will be updated for all records matching the `filter`
+    """
+    set: profilesUpdateInput!
+
+    """Restricts the mutation's impact to records matching the critera"""
+    filter: profilesFilter
+
+    """
+    The maximum number of records in the collection permitted to be affected
+    """
+    atMost: Int! = 1
+  ): profilesUpdateResponse!
+}
+
+"""Defines a per-field sorting order"""
+enum OrderByDirection {
+  AscNullsFirst
+  AscNullsLast
+  DescNullsFirst
+  DescNullsLast
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+"""The root type for querying data"""
+type Query {
+  """A pagable collection of type `dictionary`"""
+  dictionaryCollection(
+    """Query the first `n` records in the collection"""
+    first: Int
+
+    """Query the last `n` records in the collection"""
+    last: Int
+
+    """Query values in the collection before the provided cursor"""
+    before: Cursor
+
+    """Query values in the collection after the provided cursor"""
+    after: Cursor
+
+    """Filters to apply to the results set when querying from the collection"""
+    filter: dictionaryFilter
+
+    """Sort order to apply to the collection"""
+    orderBy: [dictionaryOrderBy!]
+  ): dictionaryConnection
+
+  """A pagable collection of type `profiles`"""
+  profilesCollection(
+    """Query the first `n` records in the collection"""
+    first: Int
+
+    """Query the last `n` records in the collection"""
+    last: Int
+
+    """Query values in the collection before the provided cursor"""
+    before: Cursor
+
+    """Query values in the collection after the provided cursor"""
+    after: Cursor
+
+    """Filters to apply to the results set when querying from the collection"""
+    filter: profilesFilter
+
+    """Sort order to apply to the collection"""
+    orderBy: [profilesOrderBy!]
+  ): profilesConnection
+}
+
+"""
+Boolean expression comparing fields on type "String"
+"""
+input StringFilter {
+  eq: String
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  neq: String
+}
+
+scalar Time
+
+"""
+Boolean expression comparing fields on type "Time"
+"""
+input TimeFilter {
+  eq: Time
+  gt: Time
+  gte: Time
+  lt: Time
+  lte: Time
+  neq: Time
+}
+
+scalar UUID
+
+"""
+Boolean expression comparing fields on type "UUID"
+"""
+input UUIDFilter {
+  eq: UUID
+  neq: UUID
+}
+
+type dictionary {
+  id: UUID!
+  created_at: Datetime
+  word: String
+  definition: String
+  example: String
+  slug: String
+  userId: UUID
+  like: BigInt
+  dislike: BigInt
+  user: profiles
+}
+
+type dictionaryConnection {
+  edges: [dictionaryEdge!]!
+  pageInfo: PageInfo!
+}
+
+type dictionaryDeleteResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [dictionary!]!
+}
+
+type dictionaryEdge {
+  cursor: String!
+  node: dictionary
+}
+
+input dictionaryFilter {
+  id: UUIDFilter
+  created_at: DatetimeFilter
+  word: StringFilter
+  definition: StringFilter
+  example: StringFilter
+  slug: StringFilter
+  userId: UUIDFilter
+  like: BigIntFilter
+  dislike: BigIntFilter
+}
+
+input dictionaryInsertInput {
+  id: UUID
+  created_at: Datetime
+  word: String
+  definition: String
+  example: String
+  slug: String
+  userId: UUID
+  like: BigInt
+  dislike: BigInt
+}
+
+type dictionaryInsertResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [dictionary!]!
+}
+
+input dictionaryOrderBy {
+  id: OrderByDirection
+  created_at: OrderByDirection
+  word: OrderByDirection
+  definition: OrderByDirection
+  example: OrderByDirection
+  slug: OrderByDirection
+  userId: OrderByDirection
+  like: OrderByDirection
+  dislike: OrderByDirection
+}
+
+input dictionaryUpdateInput {
+  id: UUID
+  created_at: Datetime
+  word: String
+  definition: String
+  example: String
+  slug: String
+  userId: UUID
+  like: BigInt
+  dislike: BigInt
+}
+
+type dictionaryUpdateResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [dictionary!]!
+}
+
+type profiles {
+  id: UUID!
+  updated_at: Datetime
+  username: String
+  avatar_url: String
+  website: String
+  dictionaryCollection(
+    """Query the first `n` records in the collection"""
+    first: Int
+
+    """Query the last `n` records in the collection"""
+    last: Int
+
+    """Query values in the collection before the provided cursor"""
+    before: Cursor
+
+    """Query values in the collection after the provided cursor"""
+    after: Cursor
+
+    """Filters to apply to the results set when querying from the collection"""
+    filter: dictionaryFilter
+
+    """Sort order to apply to the collection"""
+    orderBy: [dictionaryOrderBy!]
+  ): dictionaryConnection
+}
+
+type profilesConnection {
+  edges: [profilesEdge!]!
+  pageInfo: PageInfo!
+}
+
+type profilesDeleteResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [profiles!]!
+}
+
+type profilesEdge {
+  cursor: String!
+  node: profiles
+}
+
+input profilesFilter {
+  id: UUIDFilter
+  updated_at: DatetimeFilter
+  username: StringFilter
+  avatar_url: StringFilter
+  website: StringFilter
+}
+
+input profilesInsertInput {
+  id: UUID
+  updated_at: Datetime
+  username: String
+  avatar_url: String
+  website: String
+}
+
+type profilesInsertResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [profiles!]!
+}
+
+input profilesOrderBy {
+  id: OrderByDirection
+  updated_at: OrderByDirection
+  username: OrderByDirection
+  avatar_url: OrderByDirection
+  website: OrderByDirection
+}
+
+input profilesUpdateInput {
+  id: UUID
+  updated_at: Datetime
+  username: String
+  avatar_url: String
+  website: String
+}
+
+type profilesUpdateResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [profiles!]!
+}

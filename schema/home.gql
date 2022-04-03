@@ -1,0 +1,11 @@
+query {
+  dictionaryCollection {
+    edges {
+      node {
+        id
+        word
+        definition
+      }
+    }
+  }
+}
