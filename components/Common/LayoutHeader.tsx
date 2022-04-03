@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createStyles, Header, Container, Group, Burger, Paper, Transition } from '@mantine/core';
+import { createStyles, Text, Header, Container, Group, Burger, Paper, Transition } from '@mantine/core';
 import { useBooleanToggle } from '@mantine/hooks';
 
 const HEADER_HEIGHT = 60;
@@ -104,18 +104,18 @@ export function LayoutHeader({ links }: HeaderResponsiveProps) {
     <Header height={HEADER_HEIGHT} mb={40} className={classes.root}>
       <Container className={classes.header}>
         {/* <MantineLogo /> */}
-        dsfdsf
-        <Group spacing={5} className={classes.links}>
-          {items}
-        </Group>
-
         <Burger
           opened={opened}
           onClick={() => toggleOpened()}
           className={classes.burger}
           size="sm"
         />
-
+        <Text size="xl" weight={800} mt="md" mb="md">
+          {"<PgmDictionary />"}
+        </Text>
+        <Group spacing={5} className={classes.links}>
+          {items}
+        </Group>
         <Transition transition="pop-top-right" duration={200} mounted={opened}>
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
@@ -123,6 +123,7 @@ export function LayoutHeader({ links }: HeaderResponsiveProps) {
             </Paper>
           )}
         </Transition>
+        Login
       </Container>
     </Header>
   );

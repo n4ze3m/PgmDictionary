@@ -21,7 +21,7 @@ const useStyles = createStyles((theme) => ({
 export default function WordCard() {
     const { classes, theme } = useStyles();
     return (
-        <Card withBorder p="lg" radius="md" className={classes.card} mb="md">
+        <Card withBorder shadow="md" p="lg" radius="md" className={classes.card} mb="md">
             <Text weight={800} size="lg" className={classes.title} mt="xs">
                 Lorem ipsum dolor sit amet
             </Text>

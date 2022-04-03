@@ -13,10 +13,6 @@ export default function Layout({ children }: LayoutProps) {
                 {
                     label: "Home",
                     link: "/"
-                },
-                {
-                    label: "Random",
-                    link: "/random"
                 }
 
             ]} />}
