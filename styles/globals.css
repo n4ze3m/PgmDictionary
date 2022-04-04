@@ -14,3 +14,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.sbui-checkbox__label-container__label__span {
+color: whitesmoke;
+}
+
+.sbui-formlayout__label {
+color: whitesmoke;
+}

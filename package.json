@@ -12,18 +12,21 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
+    "@graphql-yoga/render-graphiql": "^2.0.0",
     "@mantine/core": "^4.1.1",
     "@mantine/form": "^4.1.1",
     "@mantine/hooks": "^4.1.1",
     "@mantine/next": "^4.1.1",
     "@mantine/notifications": "^4.1.1",
     "@supabase/supabase-js": "^1.33.3",
+    "@supabase/ui": "^0.36.4",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
     "graphql": "^16.3.0",
     "next": "12.1.4",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "urql": "^2.2.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.6.2",

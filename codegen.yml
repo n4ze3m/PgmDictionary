@@ -7,8 +7,5 @@ generates:
       - "typescript"
       - "typescript-operations"
       - "typescript-react-apollo"
-  ./graphql.schema.json:
-    plugins:
-      - "introspection"
     config:
       withHooks: true
