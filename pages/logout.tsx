@@ -1,6 +1,5 @@
 import React from "react";
 import type { NextPage } from "next";
-import { Auth } from "@supabase/ui";
 import { useSupabaseClient } from "../lib/supabase";
 import { useRouter } from "next/router";
 

@@ -10,3 +10,14 @@ mutation AddWordToDictionary($wtodInput: dictionaryInsertInput!) {
   }
 }
 `
+
+export const deleteWordFromDictionary = gql`
+mutation DeleteWordFromDic($id: String!) {
+  deleteFromdictionaryCollection(atMost: 1, filter: {id: {eq: $id}}) {
+    affectedCount
+    records {
+      id
+    }
+  }
+}
+`

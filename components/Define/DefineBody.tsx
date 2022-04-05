@@ -1,20 +1,24 @@
 import { Center, Container, Grid, Loader, Text } from "@mantine/core";
 import { useState } from "react";
-import { homeDicQuery } from "../../graphql/query";
+import { defineWordBySlug } from "../../graphql/query";
 import WordCard from "../Common/WordCard";
-import DefineCard from "./DefineCard";
+import DefineCard from "../Home/DefineCard";
 import { usePaginatedQuery } from "../../lib/use-paginated-query"
 
+interface IDefineProps {
+    slug: string;
+}
 
-export default function HomeBody() {
+export default function DefineBody(props: IDefineProps) {
     const [lastCursor, setLastCursor] = useState<string | undefined>(
         undefined
     );
 
-    const [homeQuery] = usePaginatedQuery({
-        query: homeDicQuery,
+    const [slugQuery] = usePaginatedQuery({
+        query: defineWordBySlug,
         variables: {
             after: lastCursor,
+            slug: props.slug,
         },
         mergeResult(oldData, newData) {
             return {
@@ -32,11 +36,10 @@ export default function HomeBody() {
         <Container my="md">
             <Grid>
                 <Grid.Col xs={8}>
-             
                     {
-                        homeQuery.fetching ? <Center>
+                        slugQuery.fetching ? <Center>
                             <Loader color="teal" variant="bars" />
-                        </Center> : homeQuery?.data?.feed?.edges.length > 0 ? homeQuery?.data?.feed?.edges.map((edge: any) => (
+                        </Center> : slugQuery?.data?.feed?.edges.length > 0 ? slugQuery?.data?.feed?.edges.map((edge: any) => (
                             <WordCard
                                 key={edge.node?.id}
                                 word={edge.node?.word}
@@ -47,7 +50,7 @@ export default function HomeBody() {
                             />
                         )) : <Center>
                             <Text>
-                                It seems that there is no word in the dictionary. Please add some words.
+                                Oh no! I can't find the word you are looking for. Maybe one day someone will add it.
                             </Text>
                         </Center>
                     }
