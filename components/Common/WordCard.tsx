@@ -1,4 +1,5 @@
 import { Avatar, Card, createStyles, Group, Text } from "@mantine/core";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -8,17 +9,16 @@ const useStyles = createStyles((theme) => ({
     title: {
         fontSize: "30px",
         fontWeight: "bold",
+        fontFamily: 'Montserrat'
     },
 
     definition: {
-        fontSize: "18px",
-        fontWeight: "600",
+        fontFamily: 'Montserrat'
     },
 
     example: {
-        fontSize: "18px",
-        fontWeight: "600",
         fontStyle: "italic",
+        fontFamily: 'Montserrat'
     },
 
     footer: {
@@ -34,6 +34,7 @@ interface WordCardProps {
     definition: string;
     example: string | null;
     username: string;
+    slug: string
 }
 
 
@@ -41,9 +42,11 @@ export default function WordCard(props: WordCardProps) {
     const { classes, theme } = useStyles();
     return (
         <Card withBorder shadow="md" p="lg" radius="md" className={classes.card} mb="md">
-            <Text size="xl" className={classes.title} mt="xs">
-                {props.word}
-            </Text>
+            <Link href={`/define/${props.slug}`}>
+                <Text size="xl" href={`/define/${props.slug}`} variant="link" component="a" className={classes.title} mt="xs">
+                    {props.word}
+                </Text>
+            </Link>
             <Text size="sm" lineClamp={4} className={classes.definition} mt="md">
                 {props.definition}
             </Text>

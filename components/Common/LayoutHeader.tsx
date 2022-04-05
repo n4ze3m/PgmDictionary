@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createStyles, Text, Header, Container, Group, Burger, Paper, Transition } from '@mantine/core';
 import { useBooleanToggle } from '@mantine/hooks';
+import Link from 'next/link';
 
 const HEADER_HEIGHT = 60;
 
@@ -8,6 +9,10 @@ const useStyles = createStyles((theme) => ({
   root: {
     position: 'relative',
     zIndex: 1,
+  },
+
+  mouse: {
+    cursor: 'pointer',
   },
 
   dropdown: {
@@ -110,9 +115,11 @@ export function LayoutHeader({ links }: HeaderResponsiveProps) {
           className={classes.burger}
           size="sm"
         />
-        <Text size="xl" weight={800} mt="md" mb="md">
-          {"<PgmDictionary />"}
-        </Text>
+        <Link href="/">
+          <Text className={classes.mouse} size="xl" weight={800} mt="md" mb="md">
+            {"<PgmDictionary />"}
+          </Text>
+        </Link>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
@@ -123,7 +130,6 @@ export function LayoutHeader({ links }: HeaderResponsiveProps) {
             </Paper>
           )}
         </Transition>
-        Login
       </Container>
     </Header>
   );

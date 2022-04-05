@@ -43,6 +43,7 @@ export default function HomeBody() {
                                 definition={edge.node?.definition}
                                 example={edge.node?.example}
                                 username={edge.node?.profile?.username}
+                                slug={edge.node?.slug}
                             />
                         ))}
                 </Grid.Col>
