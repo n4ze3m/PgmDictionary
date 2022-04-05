@@ -1,4 +1,4 @@
-import { Card, createStyles, Text } from "@mantine/core";
+import { Avatar, Card, createStyles, Group, Text } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -6,7 +6,19 @@ const useStyles = createStyles((theme) => ({
     },
 
     title: {
-        fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+        fontSize: "30px",
+        fontWeight: "bold",
+    },
+
+    definition: {
+        fontSize: "18px",
+        fontWeight: "600",
+    },
+
+    example: {
+        fontSize: "18px",
+        fontWeight: "600",
+        fontStyle: "italic",
     },
 
     footer: {
@@ -17,21 +29,33 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
+interface WordCardProps {
+    word: string;
+    definition: string;
+    example: string | null;
+    username: string;
+}
 
-export default function WordCard() {
+
+export default function WordCard(props: WordCardProps) {
     const { classes, theme } = useStyles();
     return (
         <Card withBorder shadow="md" p="lg" radius="md" className={classes.card} mb="md">
-            <Text weight={800} size="lg" className={classes.title} mt="xs">
-                Lorem ipsum dolor sit amet
+            <Text size="xl" className={classes.title} mt="xs">
+                {props.word}
             </Text>
-            <Text size="sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur
+            <Text size="sm" lineClamp={4} className={classes.definition} mt="md">
+                {props.definition}
             </Text>
+            <Text size="sm" lineClamp={4} className={classes.example} mt="md">
+                {props.example}
+            </Text>
+            <Group mt="md" position="right" >
+                <Avatar size="xs" src={`https://gas-k8kp.onrender.com/avatar?n=${props.username}`} radius="xl" />
+                <Text size="xs">
+                    {props.username}
+                </Text>
+            </Group>
         </Card>
     )
 }
