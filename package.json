@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "schema": "node fetchSchema",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "lint": "next lint"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
@@ -26,14 +24,10 @@
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "slugify": "^1.6.5",
     "urql": "^2.2.0"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "2.6.2",
-    "@graphql-codegen/introspection": "2.1.1",
-    "@graphql-codegen/typescript": "2.4.8",
-    "@graphql-codegen/typescript-operations": "2.3.5",
-    "@graphql-codegen/typescript-react-apollo": "3.2.11",
     "@types/node": "17.0.23",
     "@types/react": "17.0.43",
     "@types/react-dom": "17.0.14",

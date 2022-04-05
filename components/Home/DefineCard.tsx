@@ -1,10 +1,11 @@
 import { Button, Paper, Text } from "@mantine/core";
+import { Auth } from "@supabase/ui";
 import { useRouter } from "next/router";
 
 export default function DefineCard() {
 
     const router = useRouter()
-
+    const { user } = Auth.useUser();
 
 
     return (
@@ -12,7 +13,7 @@ export default function DefineCard() {
             <Text size="xl" weight={800} mt="md" mb="md">
                 {"<PgmDictionary />"}
             </Text>
-            <Button onClick={() => router.push("/create")} color="teal" mt="md" mb="md">
+            <Button onClick={() => user ? router.push("/create") : router.push("/auth")} color="teal" mt="md" mb="md">
                 Define a word
             </Button>
         </Paper>
