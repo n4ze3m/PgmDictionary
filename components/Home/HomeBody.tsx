@@ -38,6 +38,7 @@ export default function HomeBody() {
                     {
                         homeQuery?.data?.feed?.edges.map((edge: any) => (
                             <WordCard
+                                key={edge.node?.id}
                                 word={edge.node?.word}
                                 definition={edge.node?.definition}
                                 example={edge.node?.example}
