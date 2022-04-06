@@ -12,7 +12,7 @@ const useStyles = createStyles((theme) => ({
     }
 }))
 
-export default function ProfileBody({ userId }: IPropfileBodyProps) {
+export default function ProfileBody() {
    const {classes} = useStyles()
     return (
         <Container my="md">
