@@ -1,5 +1,8 @@
 # Pgm Dicitonary
 
+
+![Demo Image](https://i.imgur.com/uOkQ8Wo.png)
+
 UrbanDictionary clone using NextJS, Mantine and `Supabase graphql`. Pgm dictionary is a dictionary of programming words and their definitions and synonyms. Anyone can add their own words and definitions.
 
 ## Tools
