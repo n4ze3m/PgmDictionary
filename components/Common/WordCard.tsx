@@ -1,4 +1,4 @@
-import { Avatar, Card, createStyles, Group, Text } from "@mantine/core";
+import { Avatar, Card, createStyles, Group, Spoiler, Text } from "@mantine/core";
 import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
@@ -47,9 +47,9 @@ export default function WordCard(props: WordCardProps) {
                     {props.word}
                 </Text>
             </Link>
-            <Text size="sm" lineClamp={4} className={classes.definition} mt="md">
+            <Spoiler maxHeight={120}  className={classes.definition} showLabel="Show more" hideLabel="Hide">
                 {props.definition}
-            </Text>
+            </Spoiler>
             <Text size="sm" lineClamp={4} className={classes.example} mt="md">
                 {props.example}
             </Text>

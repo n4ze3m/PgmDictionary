@@ -15,7 +15,7 @@ import { useMutation } from "urql";
 import { useEffect } from "react";
 import { useForm } from "@mantine/form";
 import slugify from "slugify";
-import { showNotification } from '@mantine/notifications';
+import { showNotification } from "@mantine/notifications";
 
 const useStyles = createStyles((theme) => ({
   title: {
@@ -85,16 +85,20 @@ export default function CreateBody() {
               },
             })
               .then(() => {
-                if(createWtDMutation.error){
+                if (createWtDMutation.error) {
                   showNotification({
-                    message: createWtDMutation?.error?.message || "Something went wrong",
-                    type: 'error'
-                  })
-                }else {
+                    message:
+                      createWtDMutation?.error?.message ||
+                      "Something went wrong",
+                    type: "error",
+                  });
+                } else {
                   showNotification({
                     message: "Word added successfully",
-                    type: 'success'
-                  })
+                    type: "success",
+                  });
+
+                  router.replace("/");
                 }
                 form.reset();
               })
