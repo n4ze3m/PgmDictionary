@@ -14,11 +14,8 @@ const ProfilePage: NextPage = () => {
         if (user=== null) {
             router.replace("/auth");
         }
-    }, []);
-
-    if (user === null ) {
-        router.replace("/auth");
-    }
+    }, [user]);
+    
     return (
         <>
             <Head>
