@@ -4,6 +4,7 @@ import { MantineProvider } from '@mantine/core'
 import Layout from '../components/Common/Layout'
 import { SupabaseProvider } from '../lib/supabase'
 import { UrqlProvider } from '../lib/urql'
+import { NotificationsProvider } from '@mantine/notifications';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,9 +17,11 @@ function MyApp({ Component, pageProps }: AppProps) {
             colorScheme: 'dark',
           }}
         >
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <NotificationsProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </NotificationsProvider>
         </MantineProvider>
       </UrqlProvider>
     </SupabaseProvider>

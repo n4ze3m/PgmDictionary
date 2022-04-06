@@ -1,5 +1,5 @@
 // I  copy this code from https://github.com/supabase-community/supabase-graphql-example/blob/main/app/lib/use-paginated-query.ts
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery, UseQueryArgs, UseQueryResponse } from "urql";
 
 export function usePaginatedQuery<Data = any, Variables = object>(

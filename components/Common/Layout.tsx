@@ -26,10 +26,10 @@ export default function Layout({ children }: LayoutProps) {
             ])
         } else {
             setLinks([
-                {
-                    label: "Profile",
-                    link: "/profile"
-                },
+                // {
+                //     label: "Profile",
+                //     link: "/profile"
+                // },
                 {
                     label: "Logout",
                     link: "/logout"

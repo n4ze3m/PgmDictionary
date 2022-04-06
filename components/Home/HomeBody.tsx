@@ -1,4 +1,4 @@
-import { Center, Container, Grid, Loader, Text } from "@mantine/core";
+import { Button, Center, Container, Grid, Loader, Text } from "@mantine/core";
 import { useState } from "react";
 import { homeDicQuery } from "../../graphql/query";
 import WordCard from "../Common/WordCard";
@@ -32,11 +32,9 @@ export default function HomeBody() {
         <Container my="md">
             <Grid>
                 <Grid.Col xs={8}>
-             
+
                     {
-                        homeQuery.fetching ? <Center>
-                            <Loader color="teal" variant="bars" />
-                        </Center> : homeQuery?.data?.feed?.edges.length > 0 ? homeQuery?.data?.feed?.edges.map((edge: any) => (
+                        homeQuery?.data?.feed?.edges.length > 0 ? homeQuery?.data?.feed?.edges.map((edge: any) => (
                             <WordCard
                                 key={edge.node?.id}
                                 word={edge.node?.word}
@@ -45,11 +43,24 @@ export default function HomeBody() {
                                 username={edge.node?.profile?.username}
                                 slug={edge.node?.slug}
                             />
-                        )) : <Center>
+                        )) : !homeQuery.fetching ? <Center>
                             <Text>
                                 {"It seems that there is no word in the dictionary. Please add some words."}
                             </Text>
+                        </Center> : null
+                    }
+
+                    {
+                        homeQuery.fetching && <Center>
+                            <Loader color="teal" variant="bars" />
                         </Center>
+                    }
+                    {
+                        homeQuery.data?.feed?.pageInfo.hasNextPage && <Center><Button m="md" color="teal" onClick={() => {
+                            setLastCursor(
+                                homeQuery.data?.feed?.pageInfo.endCursor ?? undefined
+                            );
+                        }}> Load More</Button></Center>
                     }
                 </Grid.Col>
                 <Grid.Col xs={4}>

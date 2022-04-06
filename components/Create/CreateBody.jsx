@@ -15,6 +15,7 @@ import { useMutation } from "urql";
 import { useEffect } from "react";
 import { useForm } from "@mantine/form";
 import slugify from "slugify";
+import { showNotification } from '@mantine/notifications';
 
 const useStyles = createStyles((theme) => ({
   title: {
@@ -49,7 +50,7 @@ export default function CreateBody() {
       example: "",
     },
     validate: (value) => ({
-      example: !value.example.includes(value.word)
+      example: !value.example.toLowerCase().includes(value.word.toLowerCase())
         ? "Example must contain " + value.word
         : null,
     }),
@@ -84,6 +85,17 @@ export default function CreateBody() {
               },
             })
               .then(() => {
+                if(createWtDMutation.error){
+                  showNotification({
+                    message: createWtDMutation?.error?.message || "Something went wrong",
+                    type: 'error'
+                  })
+                }else {
+                  showNotification({
+                    message: "Word added successfully",
+                    type: 'success'
+                  })
+                }
                 form.reset();
               })
               .catch(console.log);
