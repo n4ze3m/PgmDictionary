@@ -50,7 +50,7 @@ export default function DefineBody(props: IDefineProps) {
                             />
                         )) : <Center>
                             <Text>
-                                Oh no! I can't find the word you are looking for. Maybe one day someone will add it.
+                                {"Oh no! I can't find the word you are looking for. Maybe one day someone will add it."}
                             </Text>
                         </Center>
                     }

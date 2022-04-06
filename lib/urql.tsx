@@ -12,7 +12,7 @@ export function UrqlProvider(props: { children: React.ReactNode }) {
     const authorization = supabaseClient.auth.session()?.access_token;
 
     if (authorization) {
-      headers["authorization"] = `Bearer ${authorization}`;
+      headers["Authorization"] = `Bearer ${authorization}`;
     }
 
     return headers;

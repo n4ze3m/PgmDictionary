@@ -47,7 +47,7 @@ export default function HomeBody() {
                             />
                         )) : <Center>
                             <Text>
-                                It seems that there is no word in the dictionary. Please add some words.
+                                {"It seems that there is no word in the dictionary. Please add some words."}
                             </Text>
                         </Center>
                     }
