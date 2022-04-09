@@ -1,5 +1,6 @@
 import { Avatar, Card, createStyles, Group, Spoiler, Text } from "@mantine/core";
 import Link from "next/link";
+import ReactHtmlParser  from "react-html-parser"
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -39,7 +40,8 @@ interface WordCardProps {
 
 
 export default function WordCard(props: WordCardProps) {
-    const { classes, theme } = useStyles();
+    const { classes } = useStyles();
+  
     return (
         <Card withBorder shadow="md" p="lg" radius="md" className={classes.card} mb="md">
             <Link href={`/define/${props.slug}`}>
@@ -48,7 +50,7 @@ export default function WordCard(props: WordCardProps) {
                 </Text>
             </Link>
             <Spoiler maxHeight={120}  className={classes.definition} showLabel="Show more" hideLabel="Hide">
-                {props.definition}
+                {ReactHtmlParser(props.definition)}
             </Spoiler>
             <Text size="sm" lineClamp={4} className={classes.example} mt="md">
                 {props.example}

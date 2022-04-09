@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import { useForm } from "@mantine/form";
 import slugify from "slugify";
 import { showNotification } from "@mantine/notifications";
+import RichTextEditor from "./RichText"
 
 const useStyles = createStyles((theme) => ({
   title: {
@@ -110,7 +111,7 @@ export default function CreateBody() {
             required
             {...form.getInputProps("word")}
           />
-          <Textarea
+          <RichTextEditor
             placeholder="Type your definiation here..."
             required
             mt="lg"
