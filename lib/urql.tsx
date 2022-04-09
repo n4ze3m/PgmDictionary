@@ -8,6 +8,8 @@ export function UrqlProvider(props: { children: React.ReactNode }) {
   function getHeaders(): Record<string, string> {
     const headers: Record<string, string> = {
       apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, Content-Type',
     };
     const authorization = supabaseClient.auth.session()?.access_token;
 

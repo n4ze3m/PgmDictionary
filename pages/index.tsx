@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title> PgmDictionary </title>
+        <title> Home |  PgmDictionary </title>
       </Head>
       <HomeBody />
     </>
